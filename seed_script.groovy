@@ -1,50 +1,8 @@
-  displayName('seed-pipe_converted')
-  configure { flowdefinition ->
-    flowdefinition / 'properties' << 'org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty' {  
-      'triggers' {       
-        'hudson.triggers.SCMTrigger' {          
-          'spec'('H/2 * * * *')
-          'ignorePostCommitHooks'(false)
-        }
-      }
-    }
-      'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
-        'configVersion'(2)
-        'userRemoteConfigs' {
-          'hudson.plugins.git.UserRemoteConfig' {
 pipelineJob('seed-pipe_converted') {
   description('')
   displayName('seed-pipe_converted')
-  keepDependencies(false)
-  quietPeriod(0)
-  checkoutRetryCount(0)
-  disabled(false)
-  concurrentBuild(false)
   configure { flowdefinition ->
-    flowdefinition / 'properties' << 'org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty' {    
-      'triggers' {        
-        'hudson.triggers.SCMTrigger' {          
-          'spec'('H/2 * * * *')
-          'ignorePostCommitHooks'(false)
-        }
-      }
-    }
-    flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
-      'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
-        'configVersion'(2)
-        'userRemoteConfigs' {
-          'hudson.plugins.git.UserRemoteConfig' {
-pipelineJob('seed-pipe_converted') {
-  description('')
-
-  displayName('seed-pipe_converted')
-  keepDependencies(false)
-  quietPeriod(0)
-  checkoutRetryCount(0)
-  disabled(false)
-  concurrentBuild(false)
-  configure { flowdefinition ->
-    flowdefinition / 'properties' << 'org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty' {      
+    flowdefinition / 'properties' << 'org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty' {     
       'triggers' {        
         'hudson.triggers.SCMTrigger' {          
           'spec'('H/2 * * * *')
@@ -74,5 +32,3 @@ pipelineJob('seed-pipe_converted') {
     }
   }
 }
-
-   
