@@ -36,7 +36,7 @@ node('SLAVE') {
        export AWS_DEFAULT_REGION="us-east-2"
        cd stack-test-env
        terraform init
-       terraform apply -yes
+       terraform apply -auto-approve
        '''
             }  
           }
