@@ -42,3 +42,5 @@ node('SLAVE') {
            sh 'rm -f /home/centos/devops.pem'
            } 
         }
+      }
+    }
