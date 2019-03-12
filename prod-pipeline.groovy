@@ -1,20 +1,24 @@
 
 node('SLAVE') {
     stage('Clone') {
-        dir('APPCODE')
+        dir('APPCODE') {
         git 'https://github.com/sivaganesan23/studentproj-code.git'
+        }
     }
     stage('Compile') {
-        dir('APPCODE')
+        dir('APPCODE') {
         sh 'mvn compile -D VERSION=$VERSION -D TYPE=$VERSIONTYPE '
     }
+    }
     stage('Quality Check') {
-        dir('APPCODE')
+        dir('APPCODE') {
         sh 'mvn sonar:sonar -Dsonar.projectKey=sivaganesan23_studentproj-code -Dsonar.organization=sivaganesan23-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=21e8fdbec9796ec78e5ddcfeb2c1cd0659289e5b -D VERSION=$VERSION -D TYPE=$VERSIONTYPE'
     }    
+    }
     stage('Package') {
-        dir('APPCODE')
+        dir('APPCODE') {
         sh 'mvn package -D VERSION=$VERSION -D TYPE=$VERSIONTYPE'
+    }
     }
     stage('Test-Env-Creation') {
         withCredentials([file(credentialsId: 'CENTOS-USER-PEM', variable: 'FILE')]) {
@@ -40,7 +44,7 @@ node('SLAVE') {
        }
       finally {
            sh 'rm -f /home/centos/devops.pem'
-           } 
+       } 
         }
-      }
     }
+}
