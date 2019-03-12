@@ -29,10 +29,10 @@ node('SLAVE') {
         dir('TERRAFORM') {
            git 'https://github.com/sivaganesan23/terraform.git'
            wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'xterm']) {
-        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'ACCESS-KEY', usernameVariable: 'ACCESS-KEY-ID', passwordVariable: 'SECRET-KEY']]) {
+        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'ACCESS-KEY', usernameVariable: 'ACCESS_KEY_ID', passwordVariable: 'SECRET_KEY']]) {
        sh ''' 
-       export AWS_ACCESS_KEY_ID="${ACCESS-KEY-ID}"
-       export AWS_SECRET_ACCESS_KEY="${SECRET-KEY}"
+       export AWS_ACCESS_KEY_ID="${ACCESS_KEY_ID}"
+       export AWS_SECRET_ACCESS_KEY="${SECRET_KEY}"
        export AWS_DEFAULT_REGION="us-east-2"
        cd stack-test-env
        terraform init
