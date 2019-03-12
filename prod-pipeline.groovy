@@ -1,5 +1,5 @@
 
-node('NEWSLAVE') {
+node('SLAVE') {
     stage('Clone') {
         dir('APPCODE') {
         git 'https://github.com/sivaganesan23/studentproj-code.git'
