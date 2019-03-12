@@ -22,7 +22,7 @@ node('SLAVE') {
     }
     stage('Test-Env-Creation') {
         withCredentials([file(credentialsId: 'CENTOS-USER-PEM', variable: 'FILE')]) {
-            sh '''cat$FILE >/home/centos/devops.pem
+            sh '''cat $FILE >/home/centos/devops.pem
             chmod 600 /home/centos/devops.pem
             '''
         try {
