@@ -1,6 +1,6 @@
 pipelineJob('seed-prod-pipe_converted') {
   description('')
-  displayName('seed-pipe_converted')
+  displayName('seed-prod-pipe_converted')
   configure { flowdefinition ->
 
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
